@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block title %}Администрирование{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main class="page-config">
+    <aside>
+        <div>
+            <p><a href="/admin/products">Товары</a></p>
+            <p><a href="/admin/orders">Заказы</a></p>
+            <p><a href="/admin/clients">Клиенты</a></p>
+            <p><a href="/add_product">Добавить товар</a></p>
+            <p><a href="{{ url_for('logout') }}">Выйти</a></p>
+        </div>
+    </aside>
+
+    <div class="items">
+        {% if page_name == 'products' %}
+            <h2>Все товары</h2>
+        {% elif page_name == 'orders' %}
+            <h2>Все заказы</h2>
+        {% elif page_name == 'clients' %}
+            <h2>Все клиенты</h2>
+        {% endif %}
+
+        {% if page_name == 'products' %}
+            {% if not items %}
+                <p class="no-products">Нет товаров.</p>
+            {% else %}
+                {% for item in items %}
+                    <div class="item">
+                        <div class="item-image">
+                            <img src="{{ item.photo }}" alt="#">
+                        </div>
+
+                        <div class="item-info">
+                            <h3>{{ item.name }}</h3>
+                            <p>Категория: {{ item.category.name }}</p>
+                            <p>Цена: {{ item.price }}</p>
+                            <p>Описание: {{ item.description }}</p>
+                            <p class="btns">
+                                <a href="/edit_product/{{ item.id }}">Изменить</a>
+                                <a href="/del_product/{{ item.id }}">Удалить</a>
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% elif page_name == 'orders' %}
+            <div class="orders">
+                {% if not items %}
+                    <p class="no-orders">Нет заказов.</p>
+                {% else %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Номер заказа</th>
+                                <th>Дата заказа</th>
+                                <th>Пользователь</th>
+                                <th>Стоимость</th>
+                                <th>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td><a href="/order/{{item.id}}">Заказ #{{item.id }}</a></td>
+                                <td>{{ item.date }}</td>
+                                <td>{{ item.customer.first_name }}</td>
+                                <td>{{ item.product.price }}</td>
+                                <td>{{ item.status }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        {% elif page_name == 'clients' %}
+        <div class="clients">
+            {% if not items %}
+                <p class="no-clients">Нет клиентов.</p>
+            {% else %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Имя</th>
+                            <th>Фамилия</th>
+                            <th>Почта</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in items %}
+                        <tr>
+                            <td>{{ item.first_name }}</td>
+                            <td>{{ item.last_name }}</td>
+                            <td>{{ item.email }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if items %}
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a class="previous" href="?page={{ page - 1 }}">&#60;</a>
+                {% endif %}
+        
+                {% if pagination.get_page_count() > page %}
+                    <a class="next" href="?page={{ page + 1 }}">&#62;</a>
+                {% endif %}
+            </div>
+        {% endif %}
+        <br>
+    </div>
+</main>
+{% endblock content %}

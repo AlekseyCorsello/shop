@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование товара{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/edit_product.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main class="page-config">
+    <div class="product">
+        <h2>Редактирование товара</h2>
+
+        <div class="product-form">
+            <form method="POST" action="/edit_product/{{prod.id}}">
+                <div>
+                    <div>
+                        {{ form.hidden_tag() }}
+                        <p>{{ form.name.label }} {{form.name(value=prod.name)}}</p>
+                        <p>{{ form.photo.label }} {{form.photo(value=prod.photo)}}</p>
+                        <p>{{ form.category.label }} {{ form.category(value=prod.category.name) }}</p>
+                        <p>{{ form.price.label }} {{ form.price(value=prod.price) }}</p>
+                    </div>
+                    <div class="desc">
+                        <p>{{ form.description.label }}</p>
+                        {{ form.description() }}
+                    </div>
+                </div>
+                <div class="btns">
+                    <p>{{ form.save() }}</p>
+                    <p><a href="{{ url_for('admin', path='products') }}">Отмена</a></p>
+                </div>
+            </form>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</main>
+{% endblock content %}

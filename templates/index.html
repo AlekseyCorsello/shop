@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main class="page-config">
+    <aside>
+        <form class="filters" method="POST" action="/index">
+            {{ form.hidden_tag() }}
+            <h3>Категории</h3>
+            {% for i in form.category %}
+                {% if loop.index == checked_id %}
+                    <p>{{ i(checked=checked) }} {{ i.label }}</p>
+                {% else %}
+                    <p>{{ i() }} {{ i.label }}</p>
+                {% endif %}
+            {% endfor %}
+            <p>{{ form.price_from.label }} {{ form.price_from(value=min_value) }}</p>
+            <p>{{ form.price_up_to.label }} {{ form.price_up_to(value=max_value) }}</p>
+            <p>{{ form.submit() }}</p>         
+        </form>
+    </aside>
+
+    <div class="items">
+        {% if not items %}
+            <h2 class="not-items">Нет товаров по указанному фильтру.</h2>
+        {% endif %}
+
+        {% for item in items %}
+            <div class="item">
+                <div class="item-image">
+                    <img src="{{ item.photo }}" alt="#">
+                </div>
+
+                <div class="item-info">
+                    <h3>{{ item.name }}</h3>
+                    <p>Категория: {{ item.category.name }}</p>
+                    <p>Цена: {{ item.price }}</p>
+                    <p>Описание: {{ item.description }}</p>
+                    <p class="add-btn"><a href="/make_order/{{ item.id }}">Заказать</a></p>
+
+                    {% with messages = get_flashed_messages(True) %}
+                        {% if messages %}
+                            {% for cat, msg in messages %}
+                                {% if cat == item.id %}
+                                    <p class="message">{{ msg }}</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        {% endfor %}
+        
+        {% if page %}
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a class="previous" href="./?page={{ page - 1 }}">&#60;</a>
+                {% endif %}
+        
+                {% if pagination.get_page_count() > page %}
+                    <a class="next" href="./?page={{ page + 1 }}">&#62;</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</main>
+
+<hr>
+
+{% endblock content %}

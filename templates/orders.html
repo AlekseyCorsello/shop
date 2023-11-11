@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Заказы{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/orders.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main class="page-config">
+    <h2>Ваши заказы</h2>
+    <div class="orders">
+        {% if not orders %}
+            <p class="no-orders">Нет заказов.</p>
+        {% else %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Номер заказа</th>
+                        <th>Дата заказа</th>
+                        <th>Стоимость</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td><a href="/order/{{order.id}}">Заказ #{{order.id }}</a></td>
+                        <td>{{ order.date }}</td>
+                        <td>{{ order.product.price }}</td>
+                        <td>{{ order.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="pagination">
+                {% if page > 1 %}
+                    <a class="previous" href="./?page={{ page - 1 }}">&#60;</a>
+                {% endif %}
+        
+                {% if pagination.get_page_count() > page %}
+                    <a class="next" href="./?page={{ page + 1 }}">&#62;</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</main>
+
+<hr>
+
+{% endblock content %}

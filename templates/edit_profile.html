@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Редактирование профиля{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/edit_profile.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main class="page-config">
+    <div class="profile">
+        <h2>Редактирование профиля</h2>
+
+        <div class="profile-edit">
+            <form method="POST" action="/edit_profile">
+                {{ form.hidden_tag() }}
+                <p>{{ form.first_name.label }} {{form.first_name(value=user.first_name)}}</p>
+                <p>{{ form.last_name.label }} {{form.last_name(value=user.last_name)}}</p>
+                <p>{{ form.password.label }} {{ form.password(placeholder='Введите текущий пароль...') }}</p>
+                <p>{{ form.new_password.label }} {{ form.new_password(placeholder='Введите новый пароль...') }}</p>
+                <p>{{ form.save() }}</p>
+                <p><a href="{{ url_for('profile') }}">Отмена</a></p>
+            </form>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</main>
+{% endblock content %}

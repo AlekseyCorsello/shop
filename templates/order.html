@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Заказ #{{item.id}}{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/order.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<main class="page-config">
+    <div class="order">
+        <h2>Заказ #{{item.id}} от {{item.date}}</h2>        
+        <div class="item">
+            <div class="item-image">
+                <img src="{{ item.product.photo }}" alt="#">
+            </div>
+
+            <div class="item-info">
+                <h3>{{ item.product.name }}</h3>
+                <p>Категория: {{ item.product.category.name }}</p>
+                <p>Цена: {{ item.product.price }}</p>
+                <p>Описание: {{ item.product.description }}</p>
+                <p>Статус: {{item.status}}</p>
+            </div>
+        </div>
+        <div class="controls">
+            {% if item.status != 'Завершен' %}
+                {% if is_admin %}
+                    <a href="/finish_order/{{item.id}}">Завершить заказ</a>
+                {% endif %}
+
+                {% if item.status == 'Активен' %}
+                    <a href="/cancel_order/{{item.id}}">Отменить заказ</a>
+                {% else %}
+                    <a href="/return_order/{{item.id}}">Возобновить заказ</a>
+                {% endif %}
+            {% endif %}
+            
+            {% if not is_admin %}
+                <a href="/del_order/{{item.id}}">Удалить заказ</a>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<hr>
+
+{% endblock content %}

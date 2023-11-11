@@ -1,0 +1,112 @@
+main {
+    display: flex;
+    margin-top: 40px !important;
+}
+
+.items {
+    flex-grow: 1;
+    margin-left: 40px;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.item-image {
+    width: 200px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.item-info {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.item-info h3 {
+    color: #2c509a;
+    font-size: 1.8rem;
+}
+
+.item-info p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+}
+
+.add-btn {
+    margin-top: auto !important;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.not-items {
+    font-size: 1.7rem;
+    margin-left: 40px;
+}
+
+.pagination a {
+    font-size: 3rem;
+    color: blue;
+    display: inline-block;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.filters p:nth-last-child(-n + 3) label {
+    display: block;
+}
+
+form, .item {
+    box-shadow: 0px 0px 5px 0px rgba(34, 60, 80, 0.25);
+    padding: 20px 15px;
+    border-radius: 12px;
+}
+
+label {
+    display: inline-block;
+    font-family: Roboto, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+input {
+    display: inline-block;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    padding: 7px 5px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    width: auto;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+form h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+form a {
+    font-size: 1.2rem;
+    color: black;
+}
+
+.message {
+    font-size: 1.7rem;
+    border-bottom: 1px solid red;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+}

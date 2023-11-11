@@ -1,0 +1,99 @@
+main h2 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.product {
+    margin: 0 100px 20px 100px;
+}
+
+.product a {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px 7px;
+    text-align: center;
+}
+
+.product a:hover {
+    color: brown;
+}
+
+.product-form p {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.product-form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.desc {
+    margin-left: 20px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+form {
+    box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.25);
+    padding: 20px 15px;
+    border-radius: 12px;
+}
+
+form > div:first-child {
+    display: flex;
+}
+
+form textarea {
+    height: 100%;
+    width: 400px;
+    font-size: 1.4rem;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    padding: 7px 5px;
+}
+
+.btns {
+    margin-top: 10px;
+}
+
+.btns p {
+    text-align: center;
+}
+
+.btns a {
+    width: 200px;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    font-family: Roboto, sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+input {
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    padding: 7px 5px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.message {
+    font-size: 1.7rem;
+    border-bottom: 1px solid red;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+}

@@ -1,0 +1,9 @@
+:root {
+    --page-padding: 120px;
+    --color-grey: rgb(102, 102, 102);
+    --color-orange: rgb(255, 141, 2);
+    --color-lightGrey: rgb(229, 229, 229);
+    --color-yellow: rgb(255, 204, 0);
+    --color-logo: rgb(141,37,48);
+    --color-blue: rgb(44, 80, 154);
+}

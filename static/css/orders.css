@@ -1,0 +1,46 @@
+main h2 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.orders {
+    margin: 0 50px;
+}
+
+.orders table {
+    width: 100%;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.orders th, .orders td {
+    padding: 5px;
+}
+
+.orders thead {
+    margin-bottom: 15px;
+}
+
+.orders tbody tr {
+    margin-bottom: 10px;
+}
+
+.no-orders {
+    font-size: 1.7rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    font-size: 3rem;
+    color: blue;
+    display: inline-block;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 20px;
+}

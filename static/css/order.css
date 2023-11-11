@@ -1,0 +1,51 @@
+main h2 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.order {
+    margin: 0 100px;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.item-image {
+    width: 200px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.item-info {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.item-info h3 {
+    color: #2c509a;
+    font-size: 1.8rem;
+}
+
+.item-info p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+}
+
+.controls a {
+    font-size: 1.5rem;
+    color: black;
+    margin: 0 20px;
+    border: 1px solid #ccc;
+    padding: 10px 7px;
+}
+
+.controls a:hover {
+    color: brown;
+}

@@ -1,0 +1,23 @@
+{% extends 'auth.html' %}
+
+{% block head %}
+    {{ super() }}
+    <title>Вход | techuniverse</title>
+{% endblock head %}
+
+{% block content %}
+    <form class="login" method="POST" action="/login">
+        {{ form.hidden_tag() }}
+        <p>{{ form.email.label }} {{ form.email(placeholder='Укажите вашу почту...') }}</p>
+        <p>{{ form.password.label }} {{ form.password(placeholder='Введите пароль...') }}</p>
+        <p>{{ form.submit() }}</p>
+        <p><a href="{{ url_for('register') }}">Создать аккаунт</a></p>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock content %}

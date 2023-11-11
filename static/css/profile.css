@@ -1,0 +1,27 @@
+main h2 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.profile {
+    margin: 0 100px 20px 100px;
+}
+
+.profile a {
+    display: inline-block;
+    font-size: 1.5rem;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px 7px;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+
+.profile a:hover {
+    color: brown;
+}
+
+.profile-info p {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}

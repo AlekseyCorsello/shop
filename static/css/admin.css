@@ -1,0 +1,124 @@
+main {
+    display: flex;
+    margin-top: 40px !important;
+}
+
+aside > div,
+.item {
+    box-shadow: 0px 0px 15px 0px rgba(34, 60, 80, 0.25);
+    padding: 20px 15px;
+    border-radius: 12px;
+}
+
+aside > div a {
+    display: block;
+    font-size: 1.5rem;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px 7px;
+    text-align: center;
+    text-wrap: nowrap;
+    margin-bottom: 10px;
+}
+
+aside > div a:hover {
+    color: brown;
+}
+
+.items {
+    flex-grow: 1;
+    margin-left: 40px;
+}
+
+.items h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.item-image {
+    width: 200px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.item-info {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.item-info h3 {
+    color: #2c509a;
+    font-size: 1.8rem;
+}
+
+.item-info p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+}
+
+.btns {
+    margin-top: auto !important;
+}
+
+.btns a {
+    margin-right: 10px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination a {
+    font-size: 3rem;
+    color: blue;
+    display: inline-block;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.orders,
+.clients {
+    margin: 0 50px;
+}
+
+.orders table,
+.clients table {
+    width: 100%;
+    font-size: 1.5rem;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.orders th, .orders td,
+.clients th, .clients td {
+    padding: 5px;
+}
+
+.orders thead,
+.clients thead {
+    margin-bottom: 15px;
+}
+
+.orders tbody tr,
+.clients tbody tr {
+    margin-bottom: 10px;
+}
+
+.no-orders,
+.no-clients,
+.no-products {
+    font-size: 1.7rem;
+}
+
+.no-products {
+    margin-left: 40px;
+}

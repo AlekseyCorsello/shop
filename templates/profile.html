@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/profile.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main class="page-config">
+    <div class="profile">
+        <h2>Ваш профиль</h2>
+
+        <div class="profile-info">
+            <p>Имя: {{user.first_name}}</p>
+            <p>Фамилия: {{user.last_name}}</p>
+            <p>Почта: {{user.email}}</p>
+        </div>
+
+        <a href="{{ url_for('edit_profile') }}">Редактировать профиль</a>
+        <a href="{{ url_for('del_acc') }}">Удалить аккаунт</a>
+        <a href="{{ url_for('logout') }}">Выйти</a>
+
+    </div>
+</main>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавление товара{% endblock title %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/add_product.css') }}">
+{% endblock head %}
+
+{% block content %}
+<main class="page-config">
+    <div class="product">
+        <h2>Добавление товара</h2>
+
+        <div class="product-form">
+            <form method="POST" action="/add_product">
+                <div>
+                    <div>
+                        {{ form.hidden_tag() }}
+                        <p>{{ form.name.label }} {{form.name(placeholder='Введите название...')}}</p>
+                        <p>{{ form.photo.label }} {{form.photo(placeholder='Вставьте ссылку на картинку...')}}</p>
+                        <p>{{ form.category.label }} {{ form.category(placeholder='Введите категорию товара...') }}</p>
+                        <p>{{ form.price.label }} {{ form.price(placeholder='Введите цену...') }}</p>
+                    </div>
+                    <div class="desc">
+                        <p>{{ form.description.label }}</p>
+                        {{ form.description(placeholder='Введите описание...') }}
+                    </div>
+                </div>
+                <div class="btns">
+                    <p>{{ form.save() }}</p>
+                    <p><a href="{{ url_for('admin', path='products') }}">Отмена</a></p>
+                </div>
+            </form>
+
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="message">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</main>
+{% endblock content %}

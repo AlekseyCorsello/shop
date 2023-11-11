@@ -1,0 +1,24 @@
+{% extends 'auth.html' %}
+
+{% block head %}
+    {{ super() }}
+    <title>Регистрация | techuniverse</title>
+{% endblock head %}
+
+{% block content %}
+    <form class="register" method="POST" action="/register">
+        {{ form.hidden_tag() }}
+        <p>{{ form.first_name.label }} {{ form.first_name(placeholder='Введите имя...') }}</p>
+        <p>{{ form.last_name.label }} {{ form.last_name(placeholder='Введите фамилию...') }}</p>
+        <p>{{ form.password.label }} {{ form.password(placeholder='Введите пароль...') }}</p>
+        <p>{{ form.email.label }} {{ form.email(placeholder='Введите почту...') }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+{% endblock content %}
